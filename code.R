@@ -16,6 +16,22 @@ ggplot(iris, aes(x=Sepal.Width, y=Sepal.Length, color=Species)) +
   geom_point()
 
 #-----------------------------------------------------------
+# 여러 레이어에서 바꿔보자
+# aes위치는 바뀌어도 상관 없다. 단, 상속되는건 X
+#-----------------------------------------------------------
+ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
+  geom_point()
+
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point(aes(color = class))
+
+ggplot(mpg, aes(displ)) +
+  geom_point(aes(y = hwy, color = class))
+
+ggplot(mpg) +
+  geom_point(aes(x = displ, y = hwy, color = class))
+
+#-----------------------------------------------------------
 # Aesthetics 실습(1)
 #-----------------------------------------------------------
 
